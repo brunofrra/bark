@@ -23,8 +23,6 @@ which sounds reasonable, but looks bad on some sites);
 
 ## Roadmap
 
-* Add a CLUT (Color Look Up Table) to speed it up;
-
 * Make the CLUT a single one per browser;
 
 * Handle background gradients;

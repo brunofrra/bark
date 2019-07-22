@@ -1,20 +1,29 @@
+/* bark.js
+ */
 /* {r, g, b} spin ({r, g, b});
  **
  * Inverts colors but keeps the hue.
  * TODO: Maybe try with L/V from HSL/HSV?
- * TODO: Add CLUT. Maybe one per browser instead of per tab.
  * TODO: Send pre- and pos-processing as callbacks to spin(), to memoize.
+ * TODO: Make the CLUT one per browser session, instead of per-tab.
  */
+let clut = {};
 let spin = (color) => {
+    /* Check memoization */
+    if (clut [JSON.stringify (color)]) {
+        return clut [JSON.stringify (color)];
+        }
     let ret = {};
     /* Invert color */
-    color.r = 255 - color.r;
-    color.g = 255 - color.g;
-    color.b = 255 - color.b;
+    ret.r = 255 - color.r;
+    ret.g = 255 - color.g;
+    ret.b = 255 - color.b;
     /* Invert hue */
-    ret.r = (color.g + color.b) / 2;
-    ret.g = (color.r + color.b) / 2;
-    ret.b = (color.r + color.g) / 2;
+    ret.r = (ret.g + ret.b) / 2;
+    ret.g = (ret.r + ret.b) / 2;
+    ret.b = (ret.r + ret.g) / 2;
+    /* Memoize */
+    clut [JSON.stringify (color)] = ret;
     return ret;
     }
 
