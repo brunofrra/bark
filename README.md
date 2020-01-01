@@ -1,5 +1,10 @@
 # Bark
 
+**On indefinite hiatus:** this project will be deprecated by (CSS'
+prefers-color-scheme)[https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme],
+should it reach widespread adoption. Because of that, this project is now very
+low priority.
+
 A WebExtension to darken (maybe eventually brighten too) webpages.
 
 ## Features
